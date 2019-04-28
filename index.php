@@ -17,7 +17,7 @@
 
  // mengambil tweet dari akun bandung
  $conn = new TwitterOAuth($key, $secret_key, $token, $secret_token);
- $response = $conn->get('search/tweets', array('q'=>'bali'));
+ $response = $conn->get('search/tweets', array('q'=>'@ImsBot'));
 
  // jika button kirim di klik
  if (isset($_POST['update'])) {
