@@ -5,10 +5,10 @@
 
  // API key
  // ganti dengan API key anda
- $key = 'm6ZfomtQ8LS9RLv8etLVdzAQm';
- $secret_key = 'FtOfh4EShIAwgoUxYatDpi8FNe1ksdK4W1n126MMFfHQ1NJXW2';
- $token = '1116904069975511041-fiofco3IeWw5KDYcSyyBwimPQCEvPm';
- $secret_token = '8fNbO0LpZ22PSRFvg7gDrbesw3yPJhxiWtoi1Qq6qP9zD';
+ $key = '1sCfXmheY1o4BwyVe0KkQqbGr';
+ $secret_key = '5ZLBDg8TmbvhLu4rlm5X5r4WsLZrL5mKVv1CM9VDqOdmSOoenM';
+ $token = '1112930097189683201-WpT5xdEmiFKRgnG0mzP7RRDI5xSoen';
+ $secret_token = 'SzGgACE6WeGS0rVG2gfeCL9TrY6aqWxKNKueoqWCHvl9y';
 
 // CONSUMER_KEY = 'm6ZfomtQ8LS9RLv8etLVdzAQm'
 // CONSUMER_SECRET = 'FtOfh4EShIAwgoUxYatDpi8FNe1ksdK4W1n126MMFfHQ1NJXW2'
@@ -17,7 +17,7 @@
 
  // mengambil tweet dari akun bandung
  $conn = new TwitterOAuth($key, $secret_key, $token, $secret_token);
- $response = $conn->get('search/tweets', array('q'=>'@ImsBot'));
+ $response = $conn->get('statuses/mentions_timeline');
 
  // jika button kirim di klik
  if (isset($_POST['update'])) {
@@ -60,15 +60,19 @@
 </head>
 <body>
 <h3>REPLY TWEET DENGAN PHP</h3>
+<a href="bot.php">Pindah</a>
+<a href="bot1.php">Pindah</a>
+
 <hr />
 <?php
  $i = 1;
- foreach ($response->statuses as $status) {
+ foreach ($response as $status) {
 
-  // set variable
+  //set variable
   $usname = $status->user->screen_name;
   $date = date('d M Y H:i A', strtotime($status->created_at));
   $text = $status->text;
+  
 ?>
 <b>@<?php echo $usname; ?></b> <small><?php echo $date; ?></small><br />
 <p><?php echo $text; ?></p>
